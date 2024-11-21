@@ -1,0 +1,75 @@
+{% extends 'front/base.html.twig' %}
+
+{% block body %}
+	<div class="container">
+		<div class=" " id="nav-parent">
+			<header class="wrapper header--dark justify-end backgrounds-styling">
+				<nav class="top-nav">
+					<div class="mb-5 peaks-mobile">
+						<div class="bg-light"></div>
+						<img class="peaks-footer" src="/../images/peaks-footer-with-background.svg" alt="">
+					</div>
+
+					{{ include('front/components/nav-menu.html.twig') }}
+
+				</nav>
+				<button class="btn-mobile-nav">
+					<img class="open-mobile-nav icon-mobile-nav" src="/../images/nav/hamburger.svg" alt="Open mobile menu">
+					<img class="close-mobile-nav icon-mobile-nav" src="/../images/nav/close_big.svg" alt="Close mobile menu">
+				</button>
+			</header>
+		</div>
+	</div>
+
+	<input type="checkbox" class="navigator-checkbox" id="navigator-check">
+
+	<label for="navigator-check">
+		<image class="open-emph" src="/../images/nav/navigator/plus_square.svg" id="open-sidebar" alt="open sidebar">
+		<image src="/../images/nav/navigator/minus_square.svg" id="close-sidebar" alt="close sidebar">
+	</label>
+
+	<div id="navigator-sidebar" class="navigator-sidebar">
+
+		<div class="sidebar-wrapper">
+			<a href="{{ path('main')}} ">
+				<div class="logo ">
+
+					<img class="logo-icon logo-icon--shining" src="/../images/nav/ring-ship.svg" alt="ship with ring icon">
+					<p class="logo-text-aside logo-text-nav">DevSelva</p>
+
+				</div>
+			</a>
+			<p class="navigator-logo__subtext">Table of contents</p>
+			<div id="sidebar-chapters" class="sidebar-chapters"></div>
+		</div>
+	</div>
+	<div class="navigator-text--container">
+		<div class="navigator-sidebar--dummy"></div>
+		<div class="navigator-text--content">
+			<h2>{{ article.title }}</h2>
+			{{ article.content|raw }}
+
+		</div>
+	</div>
+	<div class="bg-light mt-4">
+		<img class="peaks-footer" src="{{ asset('images/peaks-footer.svg') }}" alt="">
+	</div>
+	<div class="container bg-light ">
+		<footer class="wrapper articles-bottom">
+			<div>
+				<p class="logo-text logo-text-dark">DevSelva</p>
+				<a href="https://www.github.com/piotr979" target="_blank">
+					<small class="repo-link">www.github.com/piotr979</small>
+				</a>
+			</div>
+			<div class="footer--middle">
+				<p>devRide is about programming. If you would like to receive
+									 the latest articles I encourage you to subscribe.
+				</p>
+			</div>
+			<div class="">
+				<img class="footer--image" src="{{ asset('images/general_icons/AR_6.svg') }}" alt="">
+			</div>
+		</section>
+	</div>
+{% endblock %}

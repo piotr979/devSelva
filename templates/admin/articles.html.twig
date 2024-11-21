@@ -1,0 +1,61 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+	{% for message in app.flashes('notice') %}
+		<div class="flash-notice">
+			{{ message }}
+		</div>
+	{% endfor %}
+
+	<table class="articles-list">
+		<thead>
+			<tr>
+				<td>
+					Title
+				</td>
+				<td class="mobile-hide">
+					Subtitle
+				</td>
+				<td class="mobile-hide">
+					Date published
+				</td>
+				<td class="mobile-hide">
+					Content
+				</td>
+				<td>
+					Operations
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% if articles|length == 0 %}
+				<p>No articles found</p>
+			{% else %}
+				{% for article in articles %}
+					<tr>
+						<td>{{ article.title|length > 10 ? 
+							article.title|slice(0,10) ~ '...' : article.title 
+							}}
+						</td>
+						<td class="mobile-hide">
+							{{ article.subtitle|slice(0,10) }}
+						</td>
+						<td class="mobile-hide">
+							{{ article.createdAt|date('d/m/y') }}
+						</td>
+						<td class="mobile-hide">
+							{{ article.content|slice(0,18) }}
+						</td>
+						<td>
+							<a class="btn-admin btn-admin__primary me-1" href="{{ path('edit-article', { 'id': article.id }) }}">Edit</a>
+							<a class="btn-admin btn-admin__secondary" href="{{ path('article-delete', { 'id': article.id }) }}">Delete</a>
+						</td>
+					</tr>
+				{% endfor %}
+			{% endif %}
+		</tbody>
+	</table>
+
+	<a class="btn-admin btn-admin__primary" href="{{ path('new-article')}}">New article</a>
+
+{% endblock %}
