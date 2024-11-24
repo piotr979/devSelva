@@ -22,8 +22,20 @@
 .dark-nav__list-item {
     color: $c-text-light;
     padding-bottom: 1rem;
+    border-bottom: 1px solid transparent;
+    transition: all 250ms ease-in-out;
 }
-
+.dark-nav__list-item:hover {
+    border-bottom: 1px solid white;
+}
+li.admin-link {
+    border: none;
+}
+li.admin-link:hover {
+    border: none;
+    background-color: white;
+    color: black;
+}
 /* Will open menu with when .nav-open class is added to parent (with JS) */
 .nav-open .top-nav {
     opacity: 1;
